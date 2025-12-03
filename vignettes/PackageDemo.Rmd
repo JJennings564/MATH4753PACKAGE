@@ -1,0 +1,76 @@
+---
+title: "PackageDemo"
+author: "Jesse Jennings"
+date: "2025-12-3"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PackageDemo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(JesseLabPkg)
+```
+
+## Package Description
+
+This Package encapsulates a variety of functions from assignments done for MATH 4753 for the purpose of demonstrating them and possibly further use in the future. 
+
+Here I shall demonstrate four of the included functions of the package.
+
+
+## ntickets function
+
+Compute number of tickets an airline should sell given seat count, show probability,
+and target overbook probability
+
+Parameters:
+  **N:** integer number of seats on the plane
+  **gamma:** probability that the plane is truly overbooked
+  **p:** probability that a single purchaser shows up
+
+```{r}
+ntickets(N = 400,gamma = 0.02,p = .95)
+```
+
+## birthday probability function
+
+Computes the probability of at least two people in a group with size(s) n sharing the same birthday.
+
+Parameters:
+  **x:** an integer or numeric vector giving the group size(s)
+  
+```{r}
+birthday(35)
+```
+
+## myclt function
+
+Returns a histogram of sample means given a sample size and number of iterations
+
+Parameters:
+  **n:** Sample size.
+  **iter:** Number of Iterations.
+  
+```{r}
+invisible(myclt(10, 10000))
+```
+
+## myncurve Function
+This function draws a normal curve and shades the area
+between two x-values. It also prints the probability value.
+
+Parameters: 
+  **mu:** The mean of the normal distribution.
+  **sigma:** The standard deviation of the normal distribution. 
+  **a:** The starting x-value for shading.
+
+```{r}
+myncurve(mu = 10, sigma = 4, a = 10)
+```
+
