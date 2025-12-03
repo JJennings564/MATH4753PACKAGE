@@ -1,0 +1,4 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("grDevices", "rainbow")
+importFrom("graphics", "abline", "barplot", "grid", "par", "polygon", "text")
+importFrom("stats", "dnorm", "pbinom", "pnorm", "qnorm")

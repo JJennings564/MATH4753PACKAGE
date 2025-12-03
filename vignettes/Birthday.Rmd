@@ -1,0 +1,55 @@
+---
+title: "Birthday"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Birthday}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(JesseLabPkg)
+```
+
+## Mathematical Derivation (LaTeX)
+
+We need the probability that at least 2 people in a group of size $x$ share the same birthday.
+
+Ignoring leap years we assume there are $365$ equally likely birthday outcomes.
+
+The probability that all $x$ birthdays are distinct is 
+
+$$
+P(\text{all distinct}) = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365} \cdots \frac{365-x+1}{365}.
+$$
+
+so the probability of **at least 2 people sharing the same birthday** is
+
+$$
+P(\text{match}) = 1 - P(\text{all distinct}) = 1 - \frac{365!}{(365-x)! \, 365^x}.
+$$
+
+## Reformulation using "lfactorial" and "lchoose"
+
+The expression can be rewritten as
+
+$$
+P(\text{all distinct}) = \frac{\binom{365}{x} \, x!}{365^x}.
+$$
+
+
+This can be computed in r using " exp(lchoose(365,x) + lfactorial(x) - x * log(365)) "
+
+```{r}
+
+birthday(20:25)
+
+```
+
